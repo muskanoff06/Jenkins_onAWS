@@ -11,8 +11,13 @@
         sudo systemctl enable jenkins
         sudo systemctl start jenkins
         sudo systemctl status jenkins
+
 3. Make sure security group give access to 8080 port that is jenkins port.
+
 4. on crome run http://publicip:8080
         You can see jenkins page now.
+
 5. to access jenkins with passward:
          sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Note: If you build is not working and you are using AWS t3.micro then go to Nodes --> Configure Monitor --> make it 200MB.
