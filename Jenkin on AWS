@@ -1,0 +1,18 @@
+1. Create a AWS EC2 instance
+2. Run below steps in that EC2 instance
+        sudo yum update –y
+        sudo wget -O /etc/yum.repos.d/jenkins.repo \
+            https://pkg.jenkins.io/rpm-stable/jenkins.repo
+
+        sudo rpm --import https://pkg.jenkins.io/rpm-stable/jenkins.io-2026.key
+        sudo yum upgrade
+        sudo yum install java-21-amazon-corretto -y
+        sudo yum install jenkins -y
+        sudo systemctl enable jenkins
+        sudo systemctl start jenkins
+        sudo systemctl status jenkins
+3. Make sure security group give access to 8080 port that is jenkins port.
+4. on crome run http://publicip:8080
+        You can see jenkins page now.
+5. to access jenkins with passward:
+         sudo cat /var/lib/jenkins/secrets/initialAdminPassword
