@@ -20,4 +20,4 @@
 5. to access jenkins with passward:
          sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-Note: If you build is not working and you are using AWS t3.micro then go to Nodes --> Configure Monitor --> make it 200MB.
+Note: If your build is not working and you are using AWS t3.micro(free tier) then go to Nodes --> Configure Monitor --> make it 200MB.
