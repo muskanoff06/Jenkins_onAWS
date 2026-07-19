@@ -1,0 +1,14 @@
+# Code to test AWS connection with Jenkins
+pipeline{
+    agent any
+    environment{
+        cred = credentials('aws-cred')
+    }
+    stages{
+        stage('AWS Check'){
+            steps{
+                sh 'aws ec2 describe-instances'
+            }
+        }
+    }
+}
