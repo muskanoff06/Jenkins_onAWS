@@ -1,0 +1,32 @@
+#Code to push image in AWS ECR
+pipeline{
+    agent any
+    tools{
+        maven 'Maven'                   # Maven tool to build
+    }
+    environment{
+        cred = credentials('aws-cred')  # Connect aws credentials
+    }
+    stages{
+        stage('Checkout code from GIT'){      # Get code from GIT
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/muskanoff06/Project-Docker-on-Jenkins.git']])
+            }
+        }
+        stage('Maven package'){      
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage('Docker build'){
+            steps{
+                sh 'docker build -t 536051213598.dkr.ecr.us-east-1.amazonaws.com/jenkinsrepo:${BUILD_NUMBER} .' # Here image name is same as AWS ECR repo name
+            }
+            stage('ECR Push'){
+                steps{
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 536051213598.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'docker push 536051213598.dkr.ecr.us-east-1.amazonaws.com/jenkinsrepo:${BUILD_NUMBER}'
+                }
+            }}
+    }
+}
