@@ -1,0 +1,8 @@
+# To get AWS Access key 
+AWS Account  --> Security credencials ---> Create Access key
+
+# Download AWS Cred pulgins
+Go to jenkins --> Manage Jenkins --> plugins ---> AWS Credencials (Plugin Name)
+
+#Add you access key in Jenkins
+Manage Jenkins --> Credencials --> ad  cred --> AWS Creadencials.
